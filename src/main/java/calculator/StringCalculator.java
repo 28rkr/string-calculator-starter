@@ -1,9 +1,14 @@
 package calculator;
 
-class StringCalculator {
+public class StringCalculator {
 
     public int add(String input) {
-        return 0;
+    	if(input.equals("")) {
+    		return 0;
+    	}
+    	else {
+    		return Integer.parseInt(input);
+    	} 
     }
 
 }
