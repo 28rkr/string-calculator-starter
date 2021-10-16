@@ -43,4 +43,12 @@ public class StringCalculatorShould {
         assertEquals(6, stringCalculator.add("1\n2,3"));
         assertEquals(5, stringCalculator.add("1,2\n2"));
     }
+    
+    @Test
+    public void changeDelimiter() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(3, stringCalculator.add("//;\n1;2"));
+        assertEquals(6, stringCalculator.add("//!\n1!2!3"));
+        
+    }
 }
