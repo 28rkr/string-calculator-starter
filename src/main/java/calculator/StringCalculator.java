@@ -40,7 +40,8 @@ public class StringCalculator {
 				negCount++;
 			}
 			
-			total = total + toInt(num);
+			if(toInt(num) <= 1000)
+				total = total + toInt(num);
 		}
 		
 		if(negCount > 0){

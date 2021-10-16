@@ -24,7 +24,7 @@ public class StringCalculatorShould {
         assertEquals(3, stringCalculator.add("1,2"));
         assertEquals(233, stringCalculator.add("11,222"));
         assertEquals(176, stringCalculator.add("151,25"));
-        assertEquals(2100, stringCalculator.add("100,2000"));
+        assertEquals(300, stringCalculator.add("100,200"));
     }
     
     @Test
@@ -75,5 +75,12 @@ public class StringCalculatorShould {
     	catch (IllegalArgumentException e){
 			assertEquals(e.getMessage(), "negatives not allowed: -2,-4,-6");
     	}
+    }
+    
+    @Test
+    public void numberGreaterThanThousand() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(6, stringCalculator.add("1,2,3,1001"));
+        assertEquals(0, stringCalculator.add("1001,1002")); 
     }
 }
