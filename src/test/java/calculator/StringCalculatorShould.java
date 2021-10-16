@@ -83,4 +83,13 @@ public class StringCalculatorShould {
         assertEquals(6, stringCalculator.add("1,2,3,1001"));
         assertEquals(0, stringCalculator.add("1001,1002")); 
     }
+    
+    @Test
+    public void anyLengthDelimiter() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(3, stringCalculator.add("//;;\n1;;2"));
+        assertEquals(6, stringCalculator.add("//;;\n1;;2;;3")); 
+        assertEquals(6, stringCalculator.add("//!!!\n1!!!2!!!3")); 
+        assertEquals(3, stringCalculator.add("//@@\n1@@2"));
+    }
 }

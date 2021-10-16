@@ -9,9 +9,10 @@ public class StringCalculator {
     	
     	else {
     		String delimiter = ",";
-    		if(input.matches("//.\n.*")) {
-    			delimiter = Character.toString(input.charAt(2));
-    			input=input.substring(4);
+    		if(input.matches("//(.*)\n(.*)")) {
+    			int index = input.indexOf("\n");
+    			delimiter = input.substring(2, index);
+    			input=input.substring(index+1);
     		}
     		
     		String string[] = input.split(delimiter + "|\n");
@@ -20,7 +21,7 @@ public class StringCalculator {
 
     }
     
-    private static int toInt(String numString){
+    private static int toInteger(String numString){
 		return Integer.parseInt(numString);
     }
 
@@ -30,7 +31,7 @@ public class StringCalculator {
 		int negCount=0;
 		
 		for(String num : string) {
-			if(toInt(num) < 0 ) {
+			if(toInteger(num) < 0 ) {
 				
 				if(negCount==0)
 					negativeString =num; 
@@ -40,8 +41,8 @@ public class StringCalculator {
 				negCount++;
 			}
 			
-			if(toInt(num) <= 1000)
-				total = total + toInt(num);
+			if(toInteger(num) <= 1000)
+				total = total + toInteger(num);
 		}
 		
 		if(negCount > 0){
