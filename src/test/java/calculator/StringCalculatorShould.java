@@ -35,4 +35,12 @@ public class StringCalculatorShould {
         assertEquals(10, stringCalculator.add("1,2,3,4"));
         assertEquals(15, stringCalculator.add("1,2,3,4,5"));
     }
+    
+    @Test
+    public void string_with_new_lines_between_numbers_should_return_number_as_int() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(3, stringCalculator.add("1\n2"));
+        assertEquals(6, stringCalculator.add("1\n2,3"));
+        assertEquals(5, stringCalculator.add("1,2\n2"));
+    }
 }
