@@ -26,4 +26,13 @@ public class StringCalculatorShould {
         assertEquals(176, stringCalculator.add("151,25"));
         assertEquals(2100, stringCalculator.add("100,2000"));
     }
+    
+    @Test
+    public void string_with_unknown_numbers_should_return_number_as_int() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(3, stringCalculator.add("1,2"));
+        assertEquals(6, stringCalculator.add("1,2,3"));
+        assertEquals(10, stringCalculator.add("1,2,3,4"));
+        assertEquals(15, stringCalculator.add("1,2,3,4,5"));
+    }
 }
