@@ -48,7 +48,32 @@ public class StringCalculatorShould {
     public void changeDelimiter() {
         StringCalculator stringCalculator = new StringCalculator();
         assertEquals(3, stringCalculator.add("//;\n1;2"));
-        assertEquals(6, stringCalculator.add("//!\n1!2!3"));
-        
+        assertEquals(6, stringCalculator.add("//!\n1!2!3")); 
+    }
+    
+    @Test
+    public void negativeNumber() {
+    	StringCalculator stringCalculator = new StringCalculator();
+    	
+    	try {
+    		stringCalculator.add("1,-5");
+    	}
+    	catch (IllegalArgumentException e){
+			assertEquals(e.getMessage(), "negatives not allowed: -5");
+    	}
+    	 
+    	try {
+    		stringCalculator.add("-1,2,-3");
+    	}
+    	catch (IllegalArgumentException e){
+			assertEquals(e.getMessage(), "negatives not allowed: -1,-3");
+    	}
+    	
+    	try {
+    		stringCalculator.add("1,-2,3,-4,5,-6");
+    	}
+    	catch (IllegalArgumentException e){
+			assertEquals(e.getMessage(), "negatives not allowed: -2,-4,-6");
+    	}
     }
 }
