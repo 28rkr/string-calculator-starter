@@ -47,8 +47,8 @@ public class StringCalculatorShould {
     @Test
     public void changeDelimiter() {
         StringCalculator stringCalculator = new StringCalculator();
-        assertEquals(3, stringCalculator.add("//;\n1;2"));
-        assertEquals(6, stringCalculator.add("//!\n1!2!3")); 
+        assertEquals(3, stringCalculator.add("//[;]\n1;2"));
+        assertEquals(6, stringCalculator.add("//[!]\n1!2!3")); 
     }
     
     @Test
@@ -92,4 +92,12 @@ public class StringCalculatorShould {
         assertEquals(6, stringCalculator.add("//!!!\n1!!!2!!!3")); 
         assertEquals(3, stringCalculator.add("//@@\n1@@2"));
     }
+    
+    @Test
+    public void evenOddNumber() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(6, stringCalculator.add("E1,2,3,4"));
+        assertEquals(4, stringCalculator.add("O1,2,3,4")); 
+    }
+    
 }

@@ -3,6 +3,7 @@ package calculator;
 public class StringCalculator {
 
     public int add(String input) {
+    	String str="none";
     	if(input.equals("")) {
     		return 0;
     	}
@@ -14,9 +15,19 @@ public class StringCalculator {
     			delimiter = input.substring(2, index);
     			input=input.substring(index+1);
     		}
+    		if(input.startsWith("E")) {
+    			input=input.substring(1);
+    			str="even";
+    		}
+    		
+    		if(input.startsWith("O")) {
+    			input=input.substring(1);
+    			str="odd";
+    		}
+    		
     		
     		String string[] = input.split(delimiter + "|\n");
-    		return sum(string);
+    		return sum(string,str);
     	}
 
     }
@@ -25,7 +36,7 @@ public class StringCalculator {
 		return Integer.parseInt(numString);
     }
 
-	private int sum(String[] string) {
+	private int sum(String[] string,String str) {
 		String negativeString="";
 		int total = 0;
 		int negCount=0;
@@ -41,8 +52,18 @@ public class StringCalculator {
 				negCount++;
 			}
 			
-			if(toInteger(num) <= 1000)
+			if(toInteger(num) <= 1000) {
+				if (str.equals("even"))
+					if(toInteger(num)%2==0)
 				total = total + toInteger(num);
+				
+				if (str.equals("odd"))
+					if(toInteger(num)%2==1)
+				total = total + toInteger(num);
+				
+				if (str.equals("none"))
+				total = total + toInteger(num);
+			}
 		}
 		
 		if(negCount > 0){
